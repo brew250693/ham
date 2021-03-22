@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>quanlycongviec</title>
+</head>
+<body>
+
+<input id="newTask" placeholder="moi ban nhap cv moi" onchange="createNewTask()" />
+<button onclick="showAll()">Hien thi</button>
+<table border="1px">
+    <tr>
+        <th>ten cv</th>
+        <th>action</th>
+    </tr>
+    <tbody id="list">
+    <tr>
+        <td>Day C02 bai "Ham 2"</td>
+        <td><button>Xoa</button></td>
+    </tr>
+    </tbody>
+</table>
+<script>
+    let list = [
+        "Retro C02", "Retro C10", "day Ham 2 C02"
+    ]
+    // hien thi danh sach
+    function showAll(){
+        let content="";
+        for (let i = 0; i < list.length; i++) {
+            // content += `<tr>
+            //     <th>${list[i]}</th>
+            //     </tr>`;
+            // content += "<tr><th>"+list[i]+"</th></tr>";
+            content += "<tr><td>"+list[i]+"</td><td><button onclick="+"deleteTask("+i+")"+">Xoa</button><button onclick="+"edit("+i+")"+">Sua</button></td></tr>";
+        }
+        document.getElementById("list").innerHTML = content;
+    }
+    //tao moi
+    function createNewTask(){
+        //lay du lieu
+        let newTask = document.getElementById("newTask").value;
+        //them moi vao mang
+        list.push(newTask);
+        // hien thi lai ra bang
+        showAll();
+    }
+    function deleteTask(index){
+        //xoa trong mang
+        list.splice(index, 1);
+        //hien thi lai du lieu
+        showAll();
+    }
+    function edit(index){
+        // lay gia tri moi
+        let newValue = prompt("Moi nhap gia tri moi", list[index]);
+        //gan lai gia tri
+        list[index] = newValue;
+        //hien thi lai danh sach
+        showAll();
+    }
+</script>
+</body>
+</html>

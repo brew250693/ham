@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>quanlysanpham</title>
+</head>
+<body>
+<h2>Add New Product</h2>
+<input id = "newcv" placeholder="New Product" />
+<button onclick="createNewTask()">Add</button>
+
+<h4>Product Name</h4>
+<table border="1px">
+    <tbody id="list">
+    <tbody/>
+    <table/>
+<script>
+    let list = [
+        "Samsung Galaxy", "Nokia 6", "Xiaomi Redmi Note 4", "Apple Iphone 6s", "Xiaomi Mi 5S Plus", "Apple Iphone 8 Plus", "Fujitsu F-04E", "Oppo A71"
+    ]
+    function showAll(){
+        let content = "";
+        for (let i = 0; i<list.length; i++){
+            content += "<tr><td>"+list[i]+"</td><td><button onclick="+"deleteTask("+i+")"+">Delete</button><button onclick="+"edit("+i+")"+">Edit</button></td></tr>";
+        }
+        document.getElementById("list").innerHTML = content;
+
+    }
+showAll();
+    function createNewTask(){
+        let newtask = document.getElementById("newcv").value;
+        list.push (newtask);
+        showAll();
+    }
+    function deleteTask(index) {
+        list.splice(index , 1);
+        showAll();
+    }
+    function edit(index){
+        let newValue = prompt("New",list[index]);
+        list[index] = newValue;
+        showAll();
+    }
+
+</script>
+
+</body>
+</html>
